@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>InvestSmart - Your Investment Partner</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="mobile-container">
+      <div id="app">
+        <!-- Loading Screen -->
+        <div id="loading-screen" class="screen active">
+          <div class="loading-content">
+            <div class="spinner"></div>
+            <p>Loading...</p>
+          </div>
+        </div>
+
+        <!-- Splash Screen -->
+        <div id="splash-screen" class="screen">
+          <div class="splash-content">
+            <img src="/assets/hero-dashboard.svg" alt="InvestSmart Hero" style="width: 90%; max-width: 320px; margin: 0 auto 24px; display: block; border-radius: 20px; box-shadow: 0 8px 32px rgba(89,62,163,0.10);">
+            <div class="logo">
+              <img src="/assets/icon-dashboard.svg" alt="Logo" style="width: 48px; height: 48px; margin-bottom: 8px;">
+              <h1>InvestSmart</h1>
+              <p>Your Investment Partner</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Onboarding Screens -->
+        <div id="onboarding-screen" class="screen">
+          <div class="onboarding-content">
+            <div class="onboarding-slides">
+              <div class="slide active" data-slide="0">
+                <div class="slide-icon"><img src="/assets/icon-dashboard.svg" alt="Smart Investments" width="40" height="40"></div>
+                <h2>Smart Investments</h2>
+                <p>Choose from curated investment plans designed to maximize your returns with guaranteed benefits.</p>
+              </div>
+              <div class="slide" data-slide="1">
+                <div class="slide-icon"><img src="/assets/icon-plan.svg" alt="Grocery Benefits" width="40" height="40"></div>
+                <h2>Grocery Benefits</h2>
+                <p>Get exclusive grocery vouchers and benefits with every investment plan you purchase.</p>
+              </div>
+              <div class="slide" data-slide="2">
+                <div class="slide-icon"><img src="/assets/icon-profile.svg" alt="Secure & Trusted" width="40" height="40"></div>
+                <h2>Secure & Trusted</h2>
+                <p>Your investments are protected with bank-level security and government backing.</p>
+              </div>
+            </div>
+            <div class="slide-indicators">
+              <span class="indicator active" data-slide="0"></span>
+              <span class="indicator" data-slide="1"></span>
+              <span class="indicator" data-slide="2"></span>
+            </div>
+            <div class="onboarding-actions">
+              <button id="skip-btn" class="btn-secondary">Skip</button>
+              <button id="next-btn" class="btn-primary">Next</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Auth Screens -->
+        <div id="auth-screen" class="screen">
+          <div class="auth-tabs">
+            <button class="auth-tab active" data-tab="signin">Sign In</button>
+            <button class="auth-tab" data-tab="signup">Sign Up</button>
+          </div>
+
+          <!-- Sign In Form -->
+          <div id="signin-form" class="auth-form active">
+            <h2>Welcome Back!</h2>
+            <form>
+              <div class="form-group">
+                <label>Email or Phone</label>
+                <input type="text" placeholder="Enter your email or phone" required>
+              </div>
+              <div class="form-group">
+                <label>Password</label>
+                <input type="password" placeholder="Enter your password" required>
+              </div>
+              <button type="submit" class="btn-primary full-width">Sign In</button>
+            </form>
+            <div class="auth-links">
+              <a href="#" id="forgot-password-link">Forgot Password?</a>
+            </div>
+          </div>
+
+          <!-- Sign Up Form -->
+          <div id="signup-form" class="auth-form">
+            <h2>Create Account</h2>
+            <form>
+              <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" placeholder="Enter your full name" required>
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" placeholder="Enter your email" required>
+              </div>
+              <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" placeholder="Enter your phone number" required>
+              </div>
+              <div class="form-group">
+                <label>Password</label>
+                <input type="password" placeholder="Create a password" required>
+              </div>
+              <div class="form-group">
+                <label>Confirm Password</label>
+                <input type="password" placeholder="Confirm your password" required>
+              </div>
+              <button type="submit" class="btn-primary full-width">Create Account</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Forgot Password Screen -->
+        <div id="forgot-password-screen" class="screen">
+          <div class="screen-header">
+            <button class="back-btn">←</button>
+            <h2>Reset Password</h2>
+          </div>
+          <div class="screen-content">
+            <p>Enter your email address and we'll send you a link to reset your password.</p>
+            <form>
+              <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" placeholder="Enter your email" required>
+              </div>
+              <button type="submit" class="btn-primary full-width">Send Reset Link</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Dashboard/Home Screen -->
+        <div id="dashboard-screen" class="screen">
+          <div class="screen-header">
+            <div class="user-greeting">
+              <h2>Hi, Akhil! 👋</h2>
+              <p>Welcome back to InvestSmart</p>
+            </div>
+            <button class="notification-btn">🔔</button>
+          </div>
+          
+          <div class="screen-content">
+            <div class="stats-cards">
+              <div class="stat-card">
+                <div class="stat-icon"><img src="/assets/icon-dashboard.svg" alt="Total Investment" width="32" height="32"></div>
+                <div class="stat-info">
+                  <span class="stat-label">Total Investment</span>
+                  <span class="stat-value">₹45,000</span>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon"><img src="/assets/icon-plan.svg" alt="Active Plans" width="32" height="32"></div>
+                <div class="stat-info">
+                  <span class="stat-label">Active Plans</span>
+                  <span class="stat-value">3</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="quick-actions">
+              <h3>Quick Actions</h3>
+              <div class="action-buttons">
+                <button class="action-btn" data-action="plans">
+                  <span class="action-icon"><img src="/assets/icon-plan.svg" alt="Buy New Plan" width="28" height="28"></span>
+                  <span>Buy New Plan</span>
+                </button>
+                <button class="action-btn" data-action="history">
+                  <span class="action-icon"><img src="/assets/icon-notification.svg" alt="Transaction History" width="28" height="28"></span>
+                  <span>Transaction History</span>
+                </button>
+                <button class="action-btn" data-action="faq">
+                  <span class="action-icon"><img src="/assets/icon-settings.svg" alt="FAQ" width="28" height="28"></span>
+                  <span>FAQ</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="recent-transactions">
+              <h3>Recent Transactions</h3>
+              <div class="transaction-list">
+                <div class="transaction-item">
+                  <div class="transaction-info">
+                    <span class="transaction-title">Premium Plan</span>
+                    <span class="transaction-date">Jan 15, 2025</span>
+                  </div>
+                  <span class="transaction-amount success">₹25,000</span>
+                </div>
+                <div class="transaction-item">
+                  <div class="transaction-info">
+                    <span class="transaction-title">Basic Plan</span>
+                    <span class="transaction-date">Jan 10, 2025</span>
+                  </div>
+                  <span class="transaction-amount success">₹10,000</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Investment Plans Screen -->
+        <div id="plans-screen" class="screen">
+          <div class="screen-header">
+            <button class="back-btn">←</button>
+            <h2>Investment Plans</h2>
+          </div>
+          
+          <div class="screen-content">
+            <div class="plans-grid">
+              <div class="plan-card" data-plan="basic">
+                <div class="plan-badge">Most Popular</div>
+                <h3>Basic Plan</h3>
+                <div class="plan-amount">₹10,000</div>
+                <div class="plan-benefits">
+                  <div class="benefit"><img src="/assets/icon-plan.svg" alt="Grocery" width="20" height="20"> ₹2,000 grocery vouchers</div>
+                  <div class="benefit"><img src="/assets/icon-payment.svg" alt="Recharge" width="20" height="20"> Free mobile recharge</div>
+                  <div class="benefit"><img src="/assets/icon-dashboard.svg" alt="Returns" width="20" height="20"> 6% annual returns</div>
+                </div>
+                <button class="btn-primary full-width">View Details</button>
+              </div>
+
+              <div class="plan-card" data-plan="premium">
+                <div class="plan-badge premium">Premium</div>
+                <h3>Premium Plan</h3>
+                <div class="plan-amount">₹25,000</div>
+                <div class="plan-benefits">
+                  <div class="benefit"><img src="/assets/icon-plan.svg" alt="Grocery" width="20" height="20"> ₹5,000 grocery vouchers</div>
+                  <div class="benefit"><img src="/assets/icon-payment.svg" alt="Shopping" width="20" height="20"> Shopping discounts</div>
+                  <div class="benefit"><img src="/assets/icon-dashboard.svg" alt="Returns" width="20" height="20"> 8% annual returns</div>
+                </div>
+                <button class="btn-primary full-width">View Details</button>
+              </div>
+
+              <div class="plan-card" data-plan="gold">
+                <div class="plan-badge gold">Gold</div>
+                <h3>Gold Plan</h3>
+                <div class="plan-amount">₹50,000</div>
+                <div class="plan-benefits">
+                  <div class="benefit"><img src="/assets/icon-plan.svg" alt="Grocery" width="20" height="20"> ₹10,000 grocery vouchers</div>
+                  <div class="benefit"><img src="/assets/icon-payment.svg" alt="Travel" width="20" height="20"> Travel benefits</div>
+                  <div class="benefit"><img src="/assets/icon-dashboard.svg" alt="Returns" width="20" height="20"> 10% annual returns</div>
+                </div>
+                <button class="btn-primary full-width">View Details</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Plan Details Screen -->
+        <div id="plan-details-screen" class="screen">
+          <div class="screen-header">
+            <button class="back-btn">←</button>
+            <h2 id="plan-title">Plan Details</h2>
+          </div>
+          
+          <div class="screen-content">
+            <div class="plan-hero">
+              <div class="plan-amount-large" id="plan-amount">₹10,000</div>
+              <div class="plan-subtitle" id="plan-subtitle">Basic Investment Plan</div>
+            </div>
+
+            <div class="plan-details-content">
+              <div class="details-section">
+                <h3>Benefits & Features</h3>
+                <div id="plan-benefits-list" class="benefits-list">
+                  <!-- Dynamic content -->
+                </div>
+              </div>
+
+              <div class="details-section">
+                <h3>Terms & Conditions</h3>
+                <div class="terms-list">
+                  <div class="term">• Minimum investment period: 12 months</div>
+                  <div class="term">• Benefits credited monthly</div>
+                  <div class="term">• Early withdrawal charges apply</div>
+                  <div class="term">• Returns are subject to market conditions</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="screen-actions">
+              <button class="btn-primary full-width" id="buy-plan-btn">Buy This Plan</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Payment Screen -->
+        <div id="payment-screen" class="screen">
+          <div class="screen-header">
+            <button class="back-btn">←</button>
+            <h2>Payment</h2>
+          </div>
+          
+          <div class="screen-content">
+            <div class="payment-summary">
+              <h3>Payment Summary</h3>
+              <div class="summary-item">
+                <span>Plan</span>
+                <span id="payment-plan">Basic Plan</span>
+              </div>
+              <div class="summary-item">
+                <span>Amount</span>
+                <span id="payment-amount">₹10,000</span>
+              </div>
+              <div class="summary-item total">
+                <span>Total Amount</span>
+                <span id="payment-total">₹10,000</span>
+              </div>
+            </div>
+
+            <div class="payment-methods">
+              <h3>Choose Payment Method</h3>
+              <div class="method-options">
+                <label class="payment-option">
+                  <input type="radio" name="payment" value="upi" checked>
+                  <div class="option-content">
+                    <span class="option-icon">📱</span>
+                  <img src="/assets/icon-payment.svg" alt="UPI" width="20" height="20">
+                    <span>UPI</span>
+                  </div>
+                </label>
+                <label class="payment-option">
+                  <input type="radio" name="payment" value="card">
+                  <div class="option-content">
+                    <span class="option-icon">💳</span>
+                  <img src="/assets/icon-payment.svg" alt="Card" width="20" height="20">
+                    <span>Credit/Debit Card</span>
+                  </div>
+                </label>
+                <label class="payment-option">
+                  <input type="radio" name="payment" value="netbanking">
+                  <div class="option-content">
+                    <span class="option-icon">🏦</span>
+                  <img src="/assets/icon-payment.svg" alt="Net Banking" width="20" height="20">
+            <button class="notification-btn"><img src="/assets/icon-notification.svg" alt="Notifications" width="28" height="28"></button>
+                    <span>Net Banking</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <div class="screen-actions">
+              <button class="btn-primary full-width" id="proceed-payment-btn">Proceed to Pay</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Payment Success Screen -->
+        <div id="payment-success-screen" class="screen">
+          <div class="screen-content success-content">
+            <div class="success-icon">✅</div>
+            <h2>Payment Successful!</h2>
+            <p>Your investment has been confirmed.</p>
+            
+            <div class="success-details">
+              <div class="detail-item">
+                <span>Transaction ID</span>
+                <span id="transaction-id">TXN123456789</span>
+              </div>
+              <div class="detail-item">
+                <span>Plan</span>
+                <span id="success-plan">Basic Plan</span>
+              </div>
+              <div class="detail-item">
+                <span>Amount</span>
+                <span id="success-amount">₹10,000</span>
+              </div>
+            </div>
+
+            <div class="screen-actions">
+              <button class="btn-primary full-width" id="goto-dashboard-btn">Go to Dashboard</button>
+              <button class="btn-secondary full-width" id="download-receipt-btn">Download Receipt</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Payment Failed Screen -->
+        <div id="payment-failed-screen" class="screen">
+          <div class="screen-content failed-content">
+            <div class="failed-icon">❌</div>
+            <h2>Payment Failed</h2>
+            <p>We couldn't process your payment. Please try again.</p>
+            
+            <div class="screen-actions">
+              <button class="btn-primary full-width" id="retry-payment-btn">Retry Payment</button>
+              <button class="btn-secondary full-width" id="back-to-plans-btn">Back to Plans</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Transaction History Screen -->
+        <div id="history-screen" class="screen">
+          <div class="screen-header">
+            <button class="back-btn">←</button>
+            <h2>Transaction History</h2>
+          </div>
+          
+          <div class="screen-content">
+            <div class="history-filters">
+              <select class="filter-select">
+                <option value="all">All Transactions</option>
+                <option value="success">Successful</option>
+                <option value="failed">Failed</option>
+                <option value="pending">Pending</option>
+              </select>
+            </div>
+
+            <div class="transactions-list">
+              <div class="transaction-item">
+                <div class="transaction-details">
+                  <div class="transaction-header">
+                    <span class="transaction-title">Premium Plan</span>
+                    <span class="transaction-status success">Success</span>
+                  </div>
+                  <div class="transaction-meta">
+                    <span class="transaction-date">Jan 15, 2025 • 2:30 PM</span>
+                    <span class="transaction-id">TXN123456789</span>
+                  </div>
+                </div>
+                <div class="transaction-amount">₹25,000</div>
+              </div>
+
+              <div class="transaction-item">
+                <div class="transaction-details">
+                  <div class="transaction-header">
+                    <span class="transaction-title">Basic Plan</span>
+                    <span class="transaction-status success">Success</span>
+                  </div>
+                  <div class="transaction-meta">
+                    <span class="transaction-date">Jan 10, 2025 • 11:15 AM</span>
+                    <span class="transaction-id">TXN123456788</span>
+                  </div>
+                </div>
+                <div class="transaction-amount">₹10,000</div>
+              </div>
+
+              <div class="transaction-item">
+                <div class="transaction-details">
+                  <div class="transaction-header">
+                    <span class="transaction-title">Gold Plan</span>
+                    <span class="transaction-status failed">Failed</span>
+                  </div>
+                  <div class="transaction-meta">
+                    <span class="transaction-date">Jan 5, 2025 • 4:45 PM</span>
+                    <span class="transaction-id">TXN123456787</span>
+                  </div>
+                </div>
+                <div class="transaction-amount">₹50,000</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Profile Screen -->
+        <div id="profile-screen" class="screen">
+          <div class="screen-header">
+            <button class="back-btn">←</button>
+            <h2>Profile</h2>
+          </div>
+          
+          <div class="screen-content">
+            <div class="profile-header">
+              <div class="profile-avatar">👤</div>
+              <div class="profile-info">
+                <h3>Akhil Golu</h3>
+                <p>akhil.golu@email.com</p>
+              </div>
+              <button class="edit-profile-btn">Edit</button>
+            </div>
+
+            <div class="profile-details">
+              <div class="detail-group">
+                <label>Full Name</label>
+                <input type="text" value="Akhil Golu" readonly>
+              </div>
+              <div class="detail-group">
+                <label>Email</label>
+                <input type="email" value="akhil.golu@email.com" readonly>
+              </div>
+              <div class="detail-group">
+                <label>Phone</label>
+                <input type="tel" value="+91 98765 43210" readonly>
+              </div>
+              <div class="detail-group">
+                <label>Date of Birth</label>
+                <input type="date" value="1995-06-15" readonly>
+              </div>
+            </div>
+
+            <div class="profile-actions">
+              <button class="btn-secondary full-width" id="change-password-btn">Change Password</button>
+              <button class="btn-danger full-width" id="logout-btn">Logout</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Settings Screen -->
+        <div id="settings-screen" class="screen">
+          <div class="screen-header">
+            <button class="back-btn">←</button>
+            <h2>Settings</h2>
+          </div>
+          
+          <div class="screen-content">
+            <div class="settings-group">
+              <h3>Notifications</h3>
+              <div class="setting-item">
+                <div class="setting-info">
+                  <span>Push Notifications</span>
+                  <p>Receive updates about your investments</p>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" checked>
+                  <span class="slider"></span>
+                </label>
+              </div>
+              <div class="setting-item">
+                <div class="setting-info">
+                  <span>Email Notifications</span>
+                  <p>Get transaction confirmations via email</p>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" checked>
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="settings-group">
+              <h3>Security</h3>
+              <div class="setting-item clickable">
+                <div class="setting-info">
+                  <span>Change Password</span>
+                  <p>Update your account password</p>
+                </div>
+                <span class="setting-arrow">→</span>
+              </div>
+              <div class="setting-item">
+                <div class="setting-info">
+                  <span>Two-Factor Authentication</span>
+                  <p>Add extra security to your account</p>
+                </div>
+                <label class="switch">
+                  <input type="checkbox">
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="settings-group">
+              <h3>App</h3>
+              <div class="setting-item clickable">
+                <div class="setting-info">
+                  <span>Language</span>
+                  <p>English</p>
+                </div>
+                <span class="setting-arrow">→</span>
+              </div>
+              <div class="setting-item clickable">
+                <div class="setting-info">
+                  <span>App Version</span>
+                  <p>1.0.0</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Notifications Screen -->
+        <div id="notifications-screen" class="screen">
+          <div class="screen-header">
+            <button class="back-btn">←</button>
+            <h2>Notifications</h2>
+          </div>
+          
+          <div class="screen-content">
+            <div class="notifications-list">
+              <div class="notification-item unread">
+                <div class="notification-icon success">✅</div>
+                <div class="notification-content">
+                  <div class="notification-title">Payment Successful</div>
+                  <div class="notification-message">Your investment in Premium Plan has been confirmed.</div>
+                  <div class="notification-time">2 hours ago</div>
+                </div>
+              </div>
+
+              <div class="notification-item">
+                <div class="notification-icon info">ℹ️</div>
+                <div class="notification-content">
+                  <div class="notification-title">New Plan Available</div>
+                  <div class="notification-message">Check out our new Platinum Plan with enhanced benefits.</div>
+                  <div class="notification-time">1 day ago</div>
+                </div>
+              </div>
+
+              <div class="notification-item">
+                <div class="notification-icon warning">⚠️</div>
+                <div class="notification-content">
+                  <div class="notification-title">Plan Expiring Soon</div>
+                  <div class="notification-message">Your Basic Plan will expire in 30 days.</div>
+                  <div class="notification-time">3 days ago</div>
+                </div>
+              </div>
+
+              <div class="notification-item">
+                <div class="notification-icon success">💰</div>
+                <div class="notification-content">
+                  <div class="notification-title">Monthly Benefits Credited</div>
+                  <div class="notification-message">₹500 grocery voucher has been added to your account.</div>
+                  <div class="notification-time">1 week ago</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Support/Contact Screen -->
+        <div id="support-screen" class="screen">
+          <div class="screen-header">
+            <button class="back-btn">←</button>
+            <h2>Support & Contact</h2>
+          </div>
+          
+          <div class="screen-content">
+            <div class="contact-options">
+              <div class="contact-card">
+                <div class="contact-icon">📞</div>
+                <div class="contact-info">
+                  <h3>Call Us</h3>
+                  <p>1800-123-4567</p>
+                  <span class="contact-hours">24/7 Support</span>
+                </div>
+              </div>
+
+              <div class="contact-card">
+                <div class="contact-icon">✉️</div>
+                <div class="contact-info">
+                  <h3>Email Us</h3>
+                  <p>support@investsmart.com</p>
+                  <span class="contact-hours">Response within 24 hours</span>
+                </div>
+              </div>
+
+              <div class="contact-card">
+                <div class="contact-icon">💬</div>
+                <div class="contact-info">
+                  <h3>Live Chat</h3>
+                  <p>Chat with our support team</p>
+                  <span class="contact-hours">Mon-Fri, 9 AM - 6 PM</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-form">
+              <h3>Send us a message</h3>
+              <form>
+                <div class="form-group">
+                  <label>Subject</label>
+                  <select required>
+                    <option value="">Select a topic</option>
+                    <option value="payment">Payment Issues</option>
+                    <option value="plan">Plan Related</option>
+                    <option value="account">Account Issues</option>
+                    <option value="general">General Inquiry</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Message</label>
+                  <textarea placeholder="Describe your issue or question" required></textarea>
+                </div>
+                <button type="submit" class="btn-primary full-width">Send Message</button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ Screen -->
+        <div id="faq-screen" class="screen">
+          <div class="screen-header">
+            <button class="back-btn">←</button>
+            <h2>Frequently Asked Questions</h2>
+          </div>
+          
+          <div class="screen-content">
+            <div class="faq-search">
+              <input type="text" placeholder="Search FAQs..." class="search-input">
+            </div>
+
+            <div class="faq-list">
+              <div class="faq-item">
+                <div class="faq-question">
+                  <span>How do investment plans work?</span>
+                  <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                  <p>Our investment plans are designed to provide guaranteed returns along with additional benefits like grocery vouchers. You invest a fixed amount and receive monthly benefits plus annual returns.</p>
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <div class="faq-question">
+                  <span>When will I receive my grocery benefits?</span>
+                  <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                  <p>Grocery benefits are credited to your account monthly, starting from the first month after your investment. You'll receive a notification when benefits are credited.</p>
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <div class="faq-question">
+                  <span>Can I withdraw my investment early?</span>
+                  <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                  <p>Yes, you can withdraw your investment before maturity, but early withdrawal charges may apply. The charges vary based on the plan and withdrawal timing.</p>
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <div class="faq-question">
+                  <span>Is my investment secure?</span>
+                  <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                  <p>Absolutely! Your investments are backed by government securities and regulated by financial authorities. We use bank-level security measures to protect your funds.</p>
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <div class="faq-question">
+                  <span>How can I track my investment performance?</span>
+                  <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                  <p>You can track your investment performance through the dashboard in the app. It shows your total investment, active plans, and transaction history with real-time updates.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Terms & Conditions Screen -->
+        <div id="terms-screen" class="screen">
+          <div class="screen-header">
+            <button class="back-btn">←</button>
+            <h2>Terms & Conditions</h2>
+          </div>
+          
+          <div class="screen-content">
+            <div class="legal-content">
+              <div class="legal-section">
+                <h3>1. Agreement to Terms</h3>
+                <p>By accessing and using InvestSmart, you accept and agree to be bound by the terms and provision of this agreement.</p>
+              </div>
+
+              <div class="legal-section">
+                <h3>2. Investment Terms</h3>
+                <p>All investments are subject to market risks. Past performance does not guarantee future results. Please read all scheme related documents carefully before investing.</p>
+              </div>
+
+              <div class="legal-section">
+                <h3>3. Benefits and Returns</h3>
+                <p>Grocery benefits and additional perks are provided as per the plan terms. Returns are calculated based on the investment amount and plan duration.</p>
+              </div>
+
+              <div class="legal-section">
+                <h3>4. Payment and Fees</h3>
+                <p>All payments must be made through approved payment methods. Processing fees may apply for certain transactions.</p>
+              </div>
+
+              <div class="legal-section">
+                <h3>5. Account Security</h3>
+                <p>You are responsible for maintaining the confidentiality of your account credentials. Report any unauthorized access immediately.</p>
+              </div>
+
+              <div class="legal-section">
+                <h3>6. Limitation of Liability</h3>
+                <p>InvestSmart shall not be liable for any indirect, incidental, special, or consequential damages arising from the use of our services.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Privacy Policy Screen -->
+        <div id="privacy-screen" class="screen">
+          <div class="screen-header">
+            <button class="back-btn">←</button>
+            <h2>Privacy Policy</h2>
+          </div>
+          
+          <div class="screen-content">
+            <div class="legal-content">
+              <div class="legal-section">
+                <h3>1. Information We Collect</h3>
+                <p>We collect information you provide directly to us, such as when you create an account, make investments, or contact us for support.</p>
+              </div>
+
+              <div class="legal-section">
+                <h3>2. How We Use Your Information</h3>
+                <p>We use your information to provide, maintain, and improve our services, process transactions, and communicate with you about your account.</p>
+              </div>
+
+              <div class="legal-section">
+                <h3>3. Information Sharing</h3>
+                <p>We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as described in this policy.</p>
+              </div>
+
+              <div class="legal-section">
+                <h3>4. Data Security</h3>
+                <p>We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.</p>
+              </div>
+
+              <div class="legal-section">
+                <h3>5. Cookies and Tracking</h3>
+                <p>We use cookies and similar technologies to enhance your experience, analyze usage patterns, and personalize content.</p>
+              </div>
+
+              <div class="legal-section">
+                <h3>6. Contact Us</h3>
+                <p>If you have any questions about this Privacy Policy, please contact us at privacy@investsmart.com.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div id="bottom-nav" class="bottom-nav">
+          <button class="nav-item active" data-screen="dashboard">
+            <span class="nav-icon"><img src="/assets/icon-dashboard.svg" alt="Home" width="24" height="24"></span>
+            <span class="nav-label">Home</span>
+          </button>
+          <button class="nav-item" data-screen="plans">
+            <span class="nav-icon"><img src="/assets/icon-plan.svg" alt="Plans" width="24" height="24"></span>
+            <span class="nav-label">Plans</span>
+          </button>
+          <button class="nav-item" data-screen="history">
+            <span class="nav-icon"><img src="/assets/icon-notification.svg" alt="History" width="24" height="24"></span>
+            <span class="nav-label">History</span>
+          </button>
+          <button class="nav-item" data-screen="profile">
+            <span class="nav-icon"><img src="/assets/icon-profile.svg" alt="Profile" width="24" height="24"></span>
+            <span class="nav-label">Profile</span>
+          </button>
+          <button class="nav-item" data-screen="settings">
+            <span class="nav-icon"><img src="/assets/icon-settings.svg" alt="Settings" width="24" height="24"></span>
+            <span class="nav-label">Settings</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
