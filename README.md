@@ -281,8 +281,8 @@ Contributions, issues, and feature requests are welcome! Feel free to check the 
 ## 📞 Support
 
 For questions or support:
-- Email: support@investsmart.com (demo)
-- Phone: 1800-123-4567 (demo)
+- Email: info@everythingeasy.in 
+- Phone: 86308 40577
 
 ---
 
